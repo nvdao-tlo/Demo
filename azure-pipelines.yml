@@ -1,19 +1,24 @@
-# Starter pipeline
-# Start with a minimal pipeline that you can customize to build and deploy your code.
-# Add steps that build, run tests, deploy, and more:
-# https://aka.ms/yaml
+parameters:
+  - name: branch
+    type: string
+    default: 'main'
+  - name: environment
+    type: string
+    default: 'dev'
 
-trigger:
-- main
+jobs:
+  - job: build
+    displayName: 'Build and Test'
+    pool:
+      vmImage: 'ubuntu-latest'
+    steps:
+      - script: echo 'Building and testing the code...'
+        displayName: 'Build and Test'
 
-pool:
-  vmImage: ubuntu-latest
-
-steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
-
-- script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
+  - job: deploy
+    displayName: 'Deploy to $(environment)'
+    dependsOn: build
+    condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/$(branch)'))
+    steps:
+      - script: echo 'Deploying the code to $(environment)...'
+        displayName: 'Deploy to $(environment)'
