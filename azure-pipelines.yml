@@ -12,9 +12,7 @@ jobs:
     pool:
       vmImage: 'ubuntu-latest'
     steps:
-      - script: 
-          git log
-          echo 'Building and testing the code...'
+      - script: git log
           
         displayName: 'Build and Test'
 
