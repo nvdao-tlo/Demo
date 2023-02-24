@@ -12,7 +12,7 @@ jobs:
     pool:
       vmImage: 'ubuntu-latest'
     steps:
-      - script: git log
+      - script: git --version
           
         displayName: 'Build and Test'
 
