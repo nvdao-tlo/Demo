@@ -28,3 +28,4 @@ jobs:
     steps:
       - script: echo 'Deploying the code to $(environment)...'
         displayName: 'Deploy to $(environment)'
+# Test
