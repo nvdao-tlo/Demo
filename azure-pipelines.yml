@@ -12,7 +12,10 @@ jobs:
     pool:
       vmImage: 'ubuntu-latest'
     steps:
-      - script: echo 'Building and testing the code...'
+      - script: 
+          git log
+          echo 'Building and testing the code...'
+          
         displayName: 'Build and Test'
 
   - job: deploy
