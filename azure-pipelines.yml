@@ -8,6 +8,14 @@ parameters:
     type: boolean
     displayName: Enable automatically deploy to OCI Kubernetes
     default: false
+    
+  - name: CLUSTER_TYPE
+    type: string
+    default: AWS
+    displayName: Choose the Cluster Type
+    values: 
+    - OCI
+    - AWS
 
   - name: branch
     type: string
