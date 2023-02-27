@@ -4,6 +4,11 @@ pr:
     - main
 
 parameters:
+  - name: ENABLE_DEPLOY_K8
+    type: boolean
+    displayName: Enable automatically deploy to OCI Kubernetes
+    default: false
+
   - name: branch
     type: string
     default: 'main'
